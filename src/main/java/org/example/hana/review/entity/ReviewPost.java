@@ -3,6 +3,7 @@ package org.example.hana.review.entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.example.hana.BaseEntity;
 import org.example.hana.user.entity.User;
@@ -11,6 +12,7 @@ import org.example.hana.user.entity.User;
 @AllArgsConstructor
 @Builder
 @Entity(name = "review_posts")
+@Getter
 public class ReviewPost extends BaseEntity {
 
     @Id
@@ -28,4 +30,16 @@ public class ReviewPost extends BaseEntity {
     private String category;
 
     private Integer rating;
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 }
