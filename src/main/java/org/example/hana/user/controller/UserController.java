@@ -20,14 +20,6 @@ public class UserController {
     private final UserService userService;
     private final UserRepository userRepository;
 
-    @PostMapping("/signup")
-    public ResponseEntity<UserResponseDto> signup(
-            @RequestBody UserRequestDto userRequestDto
-            ){
-        return ResponseEntity.ok(userService.signup(userRequestDto));
-    }
-
-
     @GetMapping("/all")
     public ResponseEntity<List<UserResponseDto>> findAll(){
         List<UserResponseDto> users = userRepository.findAll().stream()
@@ -36,6 +28,10 @@ public class UserController {
         return ResponseEntity.ok(users);
     }
 
-
-
+    @PostMapping("/signup")
+    public ResponseEntity<UserResponseDto> signup(
+            @RequestBody UserRequestDto userRequestDto
+            ){
+        return ResponseEntity.ok(userService.signup(userRequestDto));
+    }
 }
