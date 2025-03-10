@@ -9,10 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ReviewPostRequestDto {
+public class ReviewCommentRequestDto {
 
     private Long userId;
-    private String title;
     private String content;
-    private String category;
 }
