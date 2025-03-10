@@ -1,16 +1,11 @@
 package org.example.hana.review.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.example.hana.BaseEntity;
 import org.example.hana.user.entity.User;
 
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Entity(name = "review_posts")
 @Getter
 public class ReviewPost extends BaseEntity {
@@ -22,24 +17,24 @@ public class ReviewPost extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
+    @Setter
     private String title;
 
     @Lob
+    @Setter
     private String content;
 
+    @Setter
     private String category;
 
     private Integer rating;
 
-    public void setTitle(String title) {
+    @Builder
+    public ReviewPost(User user, String title, String content, String category) {
+        this.user = user;
         this.title = title;
-    }
-
-    public void setContent(String content) {
         this.content = content;
-    }
-
-    public void setCategory(String category) {
         this.category = category;
+        this.rating = 0;
     }
 }

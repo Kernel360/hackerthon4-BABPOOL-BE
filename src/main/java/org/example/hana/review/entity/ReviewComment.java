@@ -1,9 +1,7 @@
 package org.example.hana.review.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.example.hana.BaseEntity;
 import org.example.hana.user.entity.User;
 
@@ -11,6 +9,7 @@ import org.example.hana.user.entity.User;
 @AllArgsConstructor
 @Builder
 @Entity(name = "review_comments")
+@Getter
 public class ReviewComment extends BaseEntity {
 
     @Id
@@ -23,5 +22,6 @@ public class ReviewComment extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
+    @Setter
     private String content;
 }
