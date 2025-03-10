@@ -21,9 +21,9 @@ public class ReviewCommentController {
             @PathVariable("postId") Long postId,
             @RequestBody ReviewCommentRequestDto requestDto
     ) {
-        reviewCommentService.create(postId, requestDto.getUserId(), requestDto.getContent());
+        ReviewCommentInfo info = reviewCommentService.create(postId, requestDto.getUserId(), requestDto.getContent());
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(ReviewCommentResponseDto.toDto(info));
     }
 
     @GetMapping("/api/review/{postId}/comment")

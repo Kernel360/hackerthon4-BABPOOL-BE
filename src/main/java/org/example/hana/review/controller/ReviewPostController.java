@@ -5,8 +5,10 @@ import org.example.hana.review.controller.dto.ReviewPostRequestDto;
 import org.example.hana.review.controller.dto.ReviewPostResponseDto;
 import org.example.hana.review.service.ReviewPostService;
 import org.example.hana.review.service.info.ReviewPostInfo;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -19,9 +21,9 @@ public class ReviewPostController {
     @PostMapping("/api/review")
     public ResponseEntity<Void> create(
             @RequestBody ReviewPostRequestDto dto
+//            @RequestPart MultipartFile file
     ) {
 
-        System.out.println(dto.toString());
         reviewPostService.create(
                 dto.getUserId(),
                 dto.getTitle(),
