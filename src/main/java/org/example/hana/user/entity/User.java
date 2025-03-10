@@ -25,4 +25,11 @@ public class User {
     private String username;
 
     private String password;
+
+    @Builder
+    public User (String nickname, String username, String password){
+        this.nickname = nickname;
+        this.username = username;
+        this.password = password;
+    }
 }
