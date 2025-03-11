@@ -60,7 +60,7 @@ public class ReviewPostService {
     public ReviewPostInfo update(Long reviewId, String title, String content, String category, int rating) {
         ReviewPost reviewPost = reviewPostRepository.findById(reviewId)
                 .orElseThrow(() -> new NoSuchElementException("no review post found with id: " + reviewId));
-        System.out.println("check");
+
         reviewPost.setTitle(title);
         reviewPost.setContent(content);
         reviewPost.setCategory(category);
