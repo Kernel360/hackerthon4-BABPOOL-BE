@@ -27,14 +27,15 @@ public class ReviewPost extends BaseEntity {
     @Setter
     private String category;
 
+    @Setter
     private Integer rating;
 
     @Builder
-    public ReviewPost(User user, String title, String content, String category) {
+    public ReviewPost(User user, String title, String content, String category, int rating) {
         this.user = user;
         this.title = title;
         this.content = content;
         this.category = category;
-        this.rating = 0;
+        this.rating = rating;
     }
 }

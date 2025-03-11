@@ -15,4 +15,5 @@ public class ReviewPostRequestDto {
     private String title;
     private String content;
     private String category;
+    private Integer rating;
 }
