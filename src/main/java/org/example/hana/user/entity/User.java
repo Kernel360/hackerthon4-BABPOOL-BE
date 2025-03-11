@@ -1,9 +1,6 @@
 package org.example.hana.user.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -25,4 +22,22 @@ public class User {
     private String username;
 
     private String password;
+
+
+
+    public void updateProfile(String username, String nickname) {
+        this.username = username;
+        this.nickname = nickname;
+    }
+
+    public void updatePassword(String password) {
+        this.password = password;
+    }
+
+    @Builder
+    public User (String nickname, String username, String password){
+        this.nickname = nickname;
+        this.username = username;
+        this.password = password;
+    }
 }
