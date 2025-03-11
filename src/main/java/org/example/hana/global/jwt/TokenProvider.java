@@ -38,7 +38,7 @@ public class TokenProvider {
     }
 
 
-    public TokenDto generateTokenDto(Authentication authentication){
+    public TokenDto generateTokenDto(Authentication authentication, Long userId){
         //권한 가져오기
         String authorities = authentication.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
@@ -51,7 +51,7 @@ public class TokenProvider {
         //Access Token 생성
         Date accessTokenExpiresIn = new Date(now + ACCESS_TOKEN_EXPIRE_TIME);
         String accessToken = Jwts.builder()
-                .setSubject(authentication.getName())   //payload Sub = name
+                .setSubject(userId.toString())   //payload Sub = name
                 .claim(AUTHORITIES_KEY, authorities)    //payload auth = ROLE_US
                 .setExpiration(accessTokenExpiresIn)    //payload exp = access token 만료기간
                 .signWith(key, SignatureAlgorithm.HS512)    //header alg = HS512

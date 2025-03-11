@@ -1,4 +1,4 @@
-package org.example.hana;
+package org.example.hana.global;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;

@@ -5,6 +5,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.util.StringUtils;
@@ -12,6 +13,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
+@Slf4j
 @RequiredArgsConstructor
 public class JwtFilter extends OncePerRequestFilter {
     public static final String AUTHORIZATION_HEADER = "Authorization";
@@ -32,6 +34,7 @@ public class JwtFilter extends OncePerRequestFilter {
         if(StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)){
             Authentication authentication = tokenProvider.getAuthentication(jwt);
             SecurityContextHolder.getContext().setAuthentication(authentication);
+            log.info("SecurityContext에 인증 정보 저장 완료: {}", authentication.getName());
         }
 
         filterChain.doFilter(request, response);
@@ -40,9 +43,15 @@ public class JwtFilter extends OncePerRequestFilter {
     //Request Header에서 토큰 정보 꺼내오기
     private String resolveToken(HttpServletRequest request) {
         String bearerToken = request.getHeader(AUTHORIZATION_HEADER);
-        if(StringUtils.hasText(bearerToken) && bearerToken.startsWith(BEARER_PREFIX)){
-            return bearerToken.split(" ")[1].trim();
+        log.info("[JwtFilter] 전체 헤더: {}", request.getHeaderNames());
+        log.info("[JwtFilter] Authorization Header: {}", bearerToken);
+
+        if (StringUtils.hasText(bearerToken) && bearerToken.startsWith(BEARER_PREFIX)) {
+            String token = bearerToken.substring(BEARER_PREFIX.length()).trim();
+            log.info("[JwtFilter] 추출된 JWT: {}", token);
+            return token;
         }
         return null;
     }
+
 }
