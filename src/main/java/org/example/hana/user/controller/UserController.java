@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.hana.user.dto.TokenDto;
 import org.example.hana.user.dto.UserRequestDto;
 import org.example.hana.user.dto.UserResponseDto;
+import org.example.hana.user.entity.User;
 import org.example.hana.user.repository.UserRepository;
 import org.example.hana.user.service.UserService;
 import org.springframework.http.HttpStatus;
@@ -19,34 +20,36 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
     private final UserRepository userRepository;
 
-    @GetMapping("/me")  //user list 확인
-    public ResponseEntity<List<UserResponseDto>> findAll(){
-        List<UserResponseDto> users = userRepository.findAll().stream()
-                .map(UserResponseDto::of)
-                .collect(Collectors.toList());
-        return ResponseEntity.ok(users);
+    @GetMapping("/users/me")  // 특정 사용자 정보 조회
+    public ResponseEntity<UserResponseDto> findById(
+            @RequestParam Long id
+    ) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 유저를 찾을 수 없습니다. id=" + id));
+
+        return ResponseEntity.ok(UserResponseDto.of(user));
     }
 
-    @PostMapping("/signup")
+    @PostMapping("/users/signup")
     public ResponseEntity<UserResponseDto> signup(
             @RequestBody UserRequestDto userRequestDto
             ) {
         return ResponseEntity.ok(userService.signup(userRequestDto));
     }
 
-    @PostMapping("/login")
+    @PostMapping("/users/login")
     public ResponseEntity<TokenDto> login(@RequestBody UserRequestDto userRequestDto) {
         return ResponseEntity.ok(userService.login(userRequestDto));
     }
 
-    @PatchMapping("/logout")
+    @PatchMapping("/users/logout")
     public ResponseEntity<String> logout(@AuthenticationPrincipal UserDetails userDetails,
                                          Principal principal) {
         Long userId = Long.parseLong(principal.getName());
@@ -54,7 +57,7 @@ public class UserController {
         return ResponseEntity.ok("로그아웃 성공");
     }
 
-    @PatchMapping("/me")
+    @PatchMapping("/users/me")
     public ResponseEntity<UserResponseDto> updateUser(
             @RequestBody UserRequestDto userRequestDto,
             Principal principal // 현재 로그인한 사용자 정보 가져오기
@@ -63,7 +66,7 @@ public class UserController {
         return ResponseEntity.ok(userService.updateUser(userId, userRequestDto));
     }
 
-    @PatchMapping("/password")
+    @PatchMapping("/users/password")
     public ResponseEntity<String> updatePassword(
             @AuthenticationPrincipal UserDetails userDetails,  // 인증된 유저 정보 가져오기
             @RequestBody Map<String, String> request,
