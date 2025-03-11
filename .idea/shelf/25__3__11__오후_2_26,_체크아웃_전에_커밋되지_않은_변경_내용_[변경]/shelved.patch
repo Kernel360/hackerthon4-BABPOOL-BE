@@ -1,0 +1,35 @@
+Index: src/main/resources/application.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>spring.application.name=Hana\r\nspring.config.import=classpath:application-secret.properties\r\n\r\nspring.datasource.url= jdbc:mysql://localhost:3306/hana\r\nspring.datasource.username= {spring.datasource.username}\r\nspring.datasource.password= {spring.datasource.password}\r\nspring.jpa.hibernate.ddl-auto=create-drop\r\n\r\nspring.jpa.properties.hibernate.show_sql=true\r\nspring.jpa.properties.hibernate.format_sql=true\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/src/main/resources/application.properties b/src/main/resources/application.properties
+--- a/src/main/resources/application.properties	(revision 517c36994764cd1d17b0bca75caecca75a7ac344)
++++ b/src/main/resources/application.properties	(date 1741616360006)
+@@ -1,9 +1,9 @@
+ spring.application.name=Hana
+ spring.config.import=classpath:application-secret.properties
+ 
+-spring.datasource.url= jdbc:mysql://localhost:3306/hana
+-spring.datasource.username= {spring.datasource.username}
+-spring.datasource.password= {spring.datasource.password}
++spring.datasource.url=jdbc:mysql://localhost:3306/hana
++spring.datasource.username= ${spring.datasource.username}
++spring.datasource.password= ${spring.datasource.password}
+ spring.jpa.hibernate.ddl-auto=create-drop
+ 
+ spring.jpa.properties.hibernate.show_sql=true
+Index: src/main/resources/application-secret.properties
+===================================================================
+diff --git a/src/main/resources/application-secret.properties b/src/main/resources/application-secret.properties
+new file mode 100644
+--- /dev/null	(date 1741616680212)
++++ b/src/main/resources/application-secret.properties	(date 1741616680212)
+@@ -0,0 +1,4 @@
++spring.datasource.username= root
++spring.datasource.password= root1234!!
++
++jwt.secret = "YMsDwwsq4noh3y9k/8vLhGrd3KiUZW9f8bHKCIfBTLlO//y6MlJI7iKuwI1Se2JqAVRaKOJ4/jqWGrdjLOJvEg=="
+\ No newline at end of file
