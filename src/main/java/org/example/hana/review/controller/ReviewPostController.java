@@ -71,8 +71,6 @@ public class ReviewPostController {
         );
         ReviewPostResponseDto responseDto = ReviewPostResponseDto.toDto(info);
 
-        System.out.println(responseDto);
-
         return ResponseEntity.ok(responseDto);
     }
 
