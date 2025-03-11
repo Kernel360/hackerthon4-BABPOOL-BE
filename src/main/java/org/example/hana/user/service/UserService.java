@@ -71,13 +71,20 @@ public class UserService {
     }
 
     @Transactional
-    public void updatePassword(Long userId, String newPassword) {
+    public void updatePassword(Long userId, String currentPassword, String newPassword) {
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new IllegalArgumentException("사용자를 찾을 수 없습니다."));
+                .orElseThrow(() -> new IllegalArgumentException("유저를 찾을 수 없습니다."));
 
+        // 현재 비밀번호 검증
+        if (!passwordEncoder.matches(currentPassword, user.getPassword())) {
+            throw new IllegalArgumentException("현재 비밀번호가 일치하지 않습니다.");
+        }
+
+        // 새 비밀번호로 업데이트
         user.updatePassword(passwordEncoder.encode(newPassword));
         userRepository.save(user);
     }
+
 
     @Transactional
     public UserResponseDto updateUser(Long userId, UserRequestDto userRequestDto) {
