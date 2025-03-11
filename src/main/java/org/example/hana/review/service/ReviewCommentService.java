@@ -48,7 +48,7 @@ public class ReviewCommentService {
                 .toList();
     }
 
-    public void update(Long postId, Long commentId, String content) {
+    public ReviewCommentInfo update(Long postId, Long commentId, String content) {
         reviewPostRepository.findById(postId)
                 .orElseThrow(() -> new NoSuchElementException("no review post found with id: " + postId));
         ReviewComment reviewComment = reviewCommentRepository.findById(commentId)
@@ -57,6 +57,8 @@ public class ReviewCommentService {
         reviewComment.setContent(content);
 
         reviewCommentRepository.save(reviewComment);
+
+        return ReviewCommentInfo.toInfo(reviewComment);
     }
 
     public void delete(Long postId, Long commentId) {

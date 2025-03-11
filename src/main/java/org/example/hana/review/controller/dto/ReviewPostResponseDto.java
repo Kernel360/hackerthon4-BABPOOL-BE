@@ -18,6 +18,8 @@ public class ReviewPostResponseDto {
     private String content;
     private String category;
     private Integer rating;
+    private String createdAt;
+    private String updatedAt;
 
     public static ReviewPostResponseDto toDto(ReviewPostInfo reviewPostInfo) {
         return ReviewPostResponseDto.builder()
@@ -28,6 +30,8 @@ public class ReviewPostResponseDto {
                 .content(reviewPostInfo.getContent())
                 .category(reviewPostInfo.getCategory())
                 .rating(reviewPostInfo.getRating())
+                .createdAt(reviewPostInfo.getCreatedAt())
+                .updatedAt(reviewPostInfo.getUpdatedAt())
                 .build();
     }
 }

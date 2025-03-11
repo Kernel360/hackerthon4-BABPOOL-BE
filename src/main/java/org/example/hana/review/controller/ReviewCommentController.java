@@ -17,17 +17,18 @@ public class ReviewCommentController {
     private final ReviewCommentService reviewCommentService;
 
     @PostMapping("/api/review/{postId}/comment")
-    public ResponseEntity<?> create(
+    public ResponseEntity<ReviewCommentResponseDto> create(
             @PathVariable("postId") Long postId,
             @RequestBody ReviewCommentRequestDto requestDto
     ) {
         ReviewCommentInfo info = reviewCommentService.create(postId, requestDto.getUserId(), requestDto.getContent());
+        ReviewCommentResponseDto responseDto = ReviewCommentResponseDto.toDto(info);
 
-        return ResponseEntity.ok(ReviewCommentResponseDto.toDto(info));
+        return ResponseEntity.ok(responseDto);
     }
 
     @GetMapping("/api/review/{postId}/comment")
-    public ResponseEntity<?> get(
+    public ResponseEntity<List<ReviewCommentResponseDto>> get(
             @PathVariable("postId") Long postId
     ) {
         List<ReviewCommentInfo> infos = reviewCommentService.findByPostId(postId);
@@ -37,18 +38,19 @@ public class ReviewCommentController {
     }
 
     @PatchMapping("/api/review/{postId}/comment/{commentId}")
-    public ResponseEntity<?> update(
+    public ResponseEntity<ReviewCommentResponseDto> update(
             @PathVariable("postId") Long postId,
             @PathVariable("commentId") Long commentId,
             @RequestBody ReviewCommentRequestDto requestDto
     ) {
-        reviewCommentService.update(postId, commentId, requestDto.getContent());
+        ReviewCommentInfo info = reviewCommentService.update(postId, commentId, requestDto.getContent());
+        ReviewCommentResponseDto responseDto = ReviewCommentResponseDto.toDto(info);
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(responseDto);
     }
 
     @DeleteMapping("/api/review/{postId}/comment/{commentId}")
-    public ResponseEntity<?> delete(
+    public ResponseEntity<Void> delete(
             @PathVariable("postId") Long postId,
             @PathVariable("commentId") Long commentId
     ) {

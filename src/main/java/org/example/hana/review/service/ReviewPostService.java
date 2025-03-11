@@ -23,10 +23,9 @@ import java.util.NoSuchElementException;
 public class ReviewPostService {
 
     private final ReviewPostRepository reviewPostRepository;
-    private final ReviewCommentRepository reviewCommentRepository;
     private final TempUserRepository userRepository;
 
-    public void create(Long userId, String title, String content, String category) {
+    public ReviewPostInfo create(Long userId, String title, String content, String category, int rating) {
         User user = userRepository.findById(userId).orElseThrow(NoSuchElementException::new);
 
         ReviewPost reviewPost = ReviewPost.builder()
@@ -34,9 +33,12 @@ public class ReviewPostService {
                 .title(title)
                 .content(content)
                 .category(category)
+                .rating(rating)
                 .build();
 
         reviewPostRepository.save(reviewPost);
+
+        return ReviewPostInfo.toInfo(reviewPost);
     }
 
     public List<ReviewPostInfo> findList() {
@@ -55,14 +57,18 @@ public class ReviewPostService {
         return ReviewPostInfo.toInfo(reviewPost);
     }
 
-    public void update(Long reviewId, String title, String content, String category) {
+    public ReviewPostInfo update(Long reviewId, String title, String content, String category, int rating) {
         ReviewPost reviewPost = reviewPostRepository.findById(reviewId)
                 .orElseThrow(() -> new NoSuchElementException("no review post found with id: " + reviewId));
-
+        System.out.println("check");
         reviewPost.setTitle(title);
         reviewPost.setContent(content);
         reviewPost.setCategory(category);
+        reviewPost.setRating(rating);
         reviewPostRepository.save(reviewPost);
+
+        return ReviewPostInfo.toInfo(reviewPost);
+
     }
 
     public void delete(Long reviewId) {

@@ -19,23 +19,26 @@ public class ReviewPostController {
     private final ReviewPostService reviewPostService;
 
     @PostMapping("/api/review")
-    public ResponseEntity<Void> create(
+    public ResponseEntity<ReviewPostResponseDto> create(
             @RequestBody ReviewPostRequestDto dto
 //            @RequestPart MultipartFile file
     ) {
 
-        reviewPostService.create(
+        ReviewPostInfo postInfo = reviewPostService.create(
                 dto.getUserId(),
                 dto.getTitle(),
                 dto.getContent(),
-                dto.getCategory()
+                dto.getCategory(),
+                dto.getRating()
         );
 
-        return ResponseEntity.ok().build();
+        ReviewPostResponseDto responseDto = ReviewPostResponseDto.toDto(postInfo);
+
+        return ResponseEntity.ok(responseDto);
     }
 
     @GetMapping("/api/review")
-    public ResponseEntity<?> findList() {
+    public ResponseEntity<List<ReviewPostResponseDto>> findList() {
         List<ReviewPostInfo> infos = reviewPostService.findList();
         List<ReviewPostResponseDto> dtos = infos.stream()
                 .map(ReviewPostResponseDto::toDto)
@@ -45,7 +48,7 @@ public class ReviewPostController {
     }
 
     @GetMapping("/api/review/{postId}")
-    public ResponseEntity<?> find(
+    public ResponseEntity<ReviewPostResponseDto> find(
             @PathVariable("postId") Long postId
     ) {
         ReviewPostInfo info = reviewPostService.find(postId);
@@ -55,18 +58,22 @@ public class ReviewPostController {
     }
 
     @PatchMapping("/api/review/{postId}")
-    public ResponseEntity<Void> update(
+    public ResponseEntity<ReviewPostResponseDto> update(
             @PathVariable("postId") Long postId,
             @RequestBody ReviewPostRequestDto dto
     ) {
-        reviewPostService.update(
+        ReviewPostInfo info = reviewPostService.update(
                 postId,
                 dto.getTitle(),
                 dto.getContent(),
-                dto.getCategory()
+                dto.getCategory(),
+                dto.getRating()
         );
+        ReviewPostResponseDto responseDto = ReviewPostResponseDto.toDto(info);
 
-        return ResponseEntity.ok().build();
+        System.out.println(responseDto);
+
+        return ResponseEntity.ok(responseDto);
     }
 
     @DeleteMapping("/api/review/{postId}")
