@@ -1,10 +1,7 @@
 package org.example.hana.user.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,10 +16,17 @@ public class User {
 
     private String nickname;
 
+    @Column(unique = true, nullable = false)
     private String username;
 
     private String password;
 
+    @Enumerated(EnumType.STRING)
+    private Authority authority;
+
+    @Setter
+    @Column(length = 500)
+    private String refreshToken;
 
 
     public void updateProfile(String username, String nickname) {
@@ -35,9 +39,12 @@ public class User {
     }
 
     @Builder
-    public User (String nickname, String username, String password){
-        this.nickname = nickname;
+    public User(String username, String password, String nickname,Authority authority, String refreshToken) {
         this.username = username;
         this.password = password;
+        this.nickname = nickname;
+        this.authority = authority;
+        this.refreshToken = refreshToken;
     }
+
 }

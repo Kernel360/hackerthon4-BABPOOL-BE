@@ -2,7 +2,7 @@ package org.example.hana.recruitment.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.example.hana.BaseEntity;
+import org.example.hana.global.BaseEntity;
 import org.example.hana.user.entity.User;
 
 @NoArgsConstructor

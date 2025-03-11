@@ -32,7 +32,7 @@ public class SecurityConfig {
                 .formLogin(form -> form.disable())  // 기본 로그인 창 비활성화
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // 세션 사용 안함 (JWT 기반 인증 시 필요)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/users/signup", "/users/login", "/users/me").permitAll()
+                        .requestMatchers("/users/**").permitAll()
                         .anyRequest().authenticated()
                 ).addFilterBefore(new JwtFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class);
 
