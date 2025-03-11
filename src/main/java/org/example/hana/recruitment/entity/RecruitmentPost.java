@@ -1,17 +1,21 @@
 package org.example.hana.recruitment.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.example.hana.BaseEntity;
 import org.example.hana.user.entity.User;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+@EqualsAndHashCode(callSuper = true)
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity(name = "recruitment_posts")
 public class RecruitmentPost extends BaseEntity {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,4 +32,6 @@ public class RecruitmentPost extends BaseEntity {
     private String restaurantLink;
 
     private String category;
+
+    private Integer maxParticipants;
 }
