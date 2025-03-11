@@ -3,31 +3,35 @@ package org.example.hana.recruitment.model;
 import lombok.Data;
 import org.example.hana.recruitment.entity.RecruitmentPost;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-
 @Data
-public class RecruitmentPostListResponse {
+public class RecruitmentPostResponse {
     private Long postId;
+
+    private String leaderNickname;
+
     private String title;
+
+    private String content;
     private String location;
+
     private String restaurantLink;
-    private LocalDate meetingDate;
-    private LocalTime meetingTime;
+
+    private String category;
+
     private Integer maxParticipants;
+
     private Integer currentParticipants;
 
 
-    public RecruitmentPostListResponse(RecruitmentPost post) {
+    public RecruitmentPostResponse(RecruitmentPost post) {
         this.postId = post.getId();
+        this.leaderNickname = post.getUser().getNickname();
         this.title = post.getTitle();
-        this.maxParticipants = post.getMaxParticipants();
+        this.content = post.getContent();
         this.location = post.getLocation();
         this.restaurantLink = post.getRestaurantLink();
-        this.meetingDate = post.getMeetingDate();
-        this.meetingTime = post.getMeetingTime();
+        this.category = post.getCategory();
+        this.maxParticipants = post.getMaxParticipants();
         this.currentParticipants = post.getApplications().size();
     }
-
-
 }

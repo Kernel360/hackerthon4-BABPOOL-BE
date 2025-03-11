@@ -2,17 +2,20 @@ package org.example.hana.recruitment.service;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.example.hana.global.exception.CustomException;
+import org.example.hana.global.exception.ErrorCode;
+import org.example.hana.recruitment.db.ApplicationRepository;
 import org.example.hana.recruitment.db.RecruitmentPostRepository;
+import org.example.hana.recruitment.entity.Application;
 import org.example.hana.recruitment.entity.RecruitmentPost;
 import org.example.hana.recruitment.model.RecruitmentPostListResponse;
 import org.example.hana.recruitment.model.RecruitmentPostRequest;
+import org.example.hana.recruitment.model.RecruitmentPostResponse;
 import org.example.hana.user.entity.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,6 +25,7 @@ import java.util.stream.Collectors;
 public class RecruitmentPostService {
 
     private final RecruitmentPostRepository recruitmentPostRepository;
+    private final ApplicationRepository applicationRepository;
 
     /**
      * 모임 공고 생성
@@ -39,9 +43,20 @@ public class RecruitmentPostService {
                 .content(request.getContent())
                 .restaurantLink(request.getRestaurantLink())
                 .category(request.getCategory())
+                .maxParticipants(request.getMaxParticipants())
+                .meetingDate(request.getMeetingDate())
+                .meetingTime(request.getMeetingTime())
+                .build();
+        RecruitmentPost savedEntity = recruitmentPostRepository.save(entity);
+
+        Application application = Application.builder()
+                .user(user)
+                .recruitmentPost(savedEntity)
                 .build();
 
-        recruitmentPostRepository.save(entity);
+        applicationRepository.save(application);
+
+
     }
 
     /**
@@ -54,10 +69,10 @@ public class RecruitmentPostService {
     @Transactional
     public void updateRecruitmentPost(Long postId, RecruitmentPostRequest request, User user) {
         RecruitmentPost recruitmentPost = recruitmentPostRepository.findById(postId)
-                .orElseThrow(() -> new IllegalArgumentException("공고가 없습니다"));
+                .orElseThrow(() -> new CustomException(ErrorCode.RECRUITMENT_POST_NOT_FOUND));
 
         if (!recruitmentPost.getUser().getId().equals(user.getId())) {
-            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "해당 공고를 수정할 권한이 없습니다.");
+            throw new CustomException(ErrorCode.NO_PERMISSION_TO_MODIFY);
         }
 
         recruitmentPost.setTitle(request.getTitle());
@@ -84,10 +99,19 @@ public class RecruitmentPostService {
                 .collect(Collectors.toList());
     }
 
-    public void deleteRecruitment(Long postId) {
+    public void deleteRecruitment(Long postId, User user) {
         RecruitmentPost recruitmentPost = recruitmentPostRepository.findById(postId)
-                .orElseThrow(() -> new IllegalArgumentException("공고가 없습니다"));
-
+                .orElseThrow(() -> new CustomException(ErrorCode.RECRUITMENT_POST_NOT_FOUND));
+        if (!recruitmentPost.getUser().getId().equals(user.getId())) {
+            throw new CustomException(ErrorCode.NO_PERMISSION_TO_MODIFY);
+        }
         recruitmentPostRepository.delete(recruitmentPost);
+    }
+
+    public RecruitmentPostResponse findRecruitmentPost(Long postId) {
+        RecruitmentPost recruitmentPost = recruitmentPostRepository.findById(postId)
+                .orElseThrow(()->new CustomException(ErrorCode.RECRUITMENT_POST_NOT_FOUND));
+
+        return new RecruitmentPostResponse(recruitmentPost);
     }
 }
