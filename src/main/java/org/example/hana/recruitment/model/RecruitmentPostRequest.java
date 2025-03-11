@@ -9,6 +9,7 @@ import java.time.LocalTime;
 public class RecruitmentPostRequest {
     private String title;
     private String content;
+    private String location;
     private String restaurantLink;
     private String category;
     private Integer maxParticipants;
