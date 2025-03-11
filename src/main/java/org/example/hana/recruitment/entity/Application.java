@@ -1,29 +1,27 @@
 package org.example.hana.recruitment.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 import org.example.hana.BaseEntity;
 import org.example.hana.user.entity.User;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity(name = "recruitment_comments")
-public class RecruitmentComment extends BaseEntity {
-
+@Entity(name = "applications")
+public class Application extends BaseEntity {
     @Id
-    @Getter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    private RecruitmentPost recruitmentPost;
-
-    @Getter
-    @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
-    @Setter
-    @Getter
-    private String content;
+    @ManyToOne
+    @JoinColumn(name = "recruitment_post_id")
+    private RecruitmentPost recruitmentPost;
+
 }

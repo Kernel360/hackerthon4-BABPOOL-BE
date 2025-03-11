@@ -6,7 +6,8 @@ import org.example.hana.BaseEntity;
 import org.example.hana.user.entity.User;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -21,7 +22,8 @@ public class RecruitmentPost extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
     private String title;
@@ -29,9 +31,21 @@ public class RecruitmentPost extends BaseEntity {
     @Lob
     private String content;
 
+    private String location;
+
     private String restaurantLink;
 
     private String category;
 
     private Integer maxParticipants;
+
+    private LocalDate meetingDate;
+
+    private LocalTime meetingTime;
+
+    @OneToMany(mappedBy = "recruitmentPost", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<RecruitmentComment> comments;
+
+    @OneToMany(mappedBy = "recruitmentPost", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<Application> applications;
 }
