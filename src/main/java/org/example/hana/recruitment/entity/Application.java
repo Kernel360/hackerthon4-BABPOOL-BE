@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
-import org.example.hana.BaseEntity;
+import org.example.hana.global.BaseEntity;
 import org.example.hana.user.entity.User;
 
 @NoArgsConstructor
