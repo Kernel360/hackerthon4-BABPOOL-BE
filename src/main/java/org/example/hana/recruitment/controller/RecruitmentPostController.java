@@ -8,7 +8,7 @@ import org.example.hana.recruitment.model.RecruitmentPostRequest;
 import org.example.hana.recruitment.model.RecruitmentPostResponse;
 import org.example.hana.recruitment.service.ApplicationService;
 import org.example.hana.recruitment.service.RecruitmentPostService;
-import org.example.hana.user.db.UserRepository;
+import org.example.hana.user.repository.UserRepository;
 import org.example.hana.user.entity.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
