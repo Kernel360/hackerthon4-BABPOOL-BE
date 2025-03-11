@@ -1,4 +1,4 @@
-package org.example.hana.recruitment.db;
+package org.example.hana.recruitment.repository;
 
 import org.example.hana.recruitment.entity.RecruitmentComment;
 import org.springframework.data.domain.Page;
