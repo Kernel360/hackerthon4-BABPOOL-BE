@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.example.hana.review.entity.ReviewComment;
 import org.example.hana.review.service.info.ReviewCommentInfo;
 
 import java.util.List;
@@ -19,6 +20,16 @@ public class ReviewCommentResponseDto {
     private Long userId;
     private String nickname;
     private String content;
+
+    public static ReviewCommentResponseDto toDto(ReviewCommentInfo info) {
+        return ReviewCommentResponseDto.builder()
+                .id(info.getId())
+                .postId(info.getPostId())
+                .userId(info.getUserId())
+                .nickname(info.getNickname())
+                .content(info.getContent())
+                .build();
+    }
 
     public static List<ReviewCommentResponseDto> toDtos(List<ReviewCommentInfo> reviewCommentInfos) {
         return reviewCommentInfos.stream()

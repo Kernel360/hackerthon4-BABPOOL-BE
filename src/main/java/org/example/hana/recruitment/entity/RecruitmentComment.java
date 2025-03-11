@@ -1,9 +1,7 @@
 package org.example.hana.recruitment.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.example.hana.global.BaseEntity;
 import org.example.hana.user.entity.User;
 
@@ -14,14 +12,18 @@ import org.example.hana.user.entity.User;
 public class RecruitmentComment extends BaseEntity {
 
     @Id
+    @Getter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private RecruitmentPost recruitmentPost;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @Getter
+    @ManyToOne
     private User user;
 
+    @Setter
+    @Getter
     private String content;
 }

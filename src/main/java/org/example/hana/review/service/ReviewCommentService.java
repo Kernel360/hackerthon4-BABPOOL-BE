@@ -21,7 +21,7 @@ public class ReviewCommentService {
     private final ReviewCommentRepository reviewCommentRepository;
     private final TempUserRepository tempUserRepository;
 
-    public void create(Long postId, Long userId, String content) {
+    public ReviewCommentInfo create(Long postId, Long userId, String content) {
         ReviewPost post = reviewPostRepository.findById(postId)
                 .orElseThrow(() -> new NoSuchElementException("no review post found with id: " + postId));
         User user = tempUserRepository.findById(userId).get();
@@ -33,6 +33,8 @@ public class ReviewCommentService {
                 .build();
 
         reviewCommentRepository.save(reviewComment);
+
+        return ReviewCommentInfo.toInfo(reviewComment);
     }
 
     public List<ReviewCommentInfo> findByPostId(Long postId) {
@@ -46,7 +48,7 @@ public class ReviewCommentService {
                 .toList();
     }
 
-    public void update(Long postId, Long commentId, String content) {
+    public ReviewCommentInfo update(Long postId, Long commentId, String content) {
         reviewPostRepository.findById(postId)
                 .orElseThrow(() -> new NoSuchElementException("no review post found with id: " + postId));
         ReviewComment reviewComment = reviewCommentRepository.findById(commentId)
@@ -55,6 +57,8 @@ public class ReviewCommentService {
         reviewComment.setContent(content);
 
         reviewCommentRepository.save(reviewComment);
+
+        return ReviewCommentInfo.toInfo(reviewComment);
     }
 
     public void delete(Long postId, Long commentId) {

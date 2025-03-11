@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.example.hana.review.entity.ReviewPost;
 
+import java.time.LocalDateTime;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,6 +20,8 @@ public class ReviewPostInfo {
     private String content;
     private String category;
     private Integer rating;
+    private String createdAt;
+    private String updatedAt;
 
     public static ReviewPostInfo toInfo(ReviewPost reviewPost) {
         return ReviewPostInfo.builder()
@@ -28,6 +32,8 @@ public class ReviewPostInfo {
                 .content(reviewPost.getContent())
                 .category(reviewPost.getCategory())
                 .rating(reviewPost.getRating())
+                .createdAt(reviewPost.getCreatedTime())
+                .updatedAt(reviewPost.getUpdatedTime())
                 .build();
     }
 }
