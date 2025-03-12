@@ -1,7 +1,11 @@
 package org.example.hana.recruitment.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import org.example.hana.recruitment.entity.RecruitmentPost;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Data
 public class RecruitmentPostResponse {
@@ -22,10 +26,14 @@ public class RecruitmentPostResponse {
 
     private Integer currentParticipants;
 
-    private Long userId;
+    private LocalDate meetingDate;
+    private LocalTime meetingTime;
+
+    @JsonProperty("isAuthor")
+    private boolean isAuthor; // 추가된 필드
 
 
-    public RecruitmentPostResponse(RecruitmentPost post) {
+    public RecruitmentPostResponse(RecruitmentPost post, Long currentUserId) {
         this.postId = post.getId();
         this.leaderNickname = post.getUser().getNickname();
         this.title = post.getTitle();
@@ -35,6 +43,8 @@ public class RecruitmentPostResponse {
         this.category = post.getCategory();
         this.maxParticipants = post.getMaxParticipants();
         this.currentParticipants = post.getApplications().size();
-        this.userId = post.getUser().getId();
+        this.meetingDate = post.getMeetingDate();
+        this.meetingTime = post.getMeetingTime();
+        this.isAuthor = post.getUser().getId().equals(currentUserId); // isAuthor 설정
     }
 }

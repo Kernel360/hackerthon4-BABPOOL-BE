@@ -11,6 +11,11 @@ import org.example.hana.user.entity.User;
 @AllArgsConstructor
 @Builder
 @Entity(name = "applications")
+@Table(
+        uniqueConstraints = {
+                @UniqueConstraint(columnNames = {"user_id", "recruitment_post_id"})
+        }
+)
 public class Application extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
