@@ -52,4 +52,17 @@ public class ApplicationService {
             throw new CustomException(ErrorCode.APPLICATION_NOT_FOUND);
         }
     }
+
+    public boolean isUserParticipating(Long userId, Long meetingId) {
+        if (userId == null) { // userId가 null인 경우 false 반환
+            return false;
+        }
+        // 유저와 모임 존재 여부 확인 (필요에 따라 예외 처리)
+        User user = userRepository.findById(userId).orElseThrow(
+                ()-> new CustomException(ErrorCode.NOT_FOUND)
+        );
+        RecruitmentPost post = recruitmentPostRepository.findById(meetingId).orElseThrow(()->new CustomException(ErrorCode.RECRUITMENT_POST_NOT_FOUND));
+
+        return applicationRepository.existsByUserAndRecruitmentPost(user, post);
+    }
 }

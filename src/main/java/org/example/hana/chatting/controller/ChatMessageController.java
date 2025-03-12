@@ -30,8 +30,8 @@ public class ChatMessageController {
             @DestinationVariable("roomId") Long roomId,
             @Payload ChatMessageRequestDto requestDto
     ) {
-        System.out.println("request: " + requestDto.userId());
-        System.out.println("request: " + requestDto.content());
+        User user = userRepository.findById(requestDto.userId())
+                .orElseThrow(NoSuchElementException::new);
 
         ChatMessage chatMessage = ChatMessage.builder()
                 .roomId(roomId)
@@ -43,7 +43,7 @@ public class ChatMessageController {
         return ChatMessageResponseDto.builder()
                 .id(chatMessage.getId())
                 .userId(requestDto.userId())
-                .nickname(requestDto.nickname())
+                .nickname(user.getNickname())
                 .content(chatMessage.getContent())
                 .build();
     }

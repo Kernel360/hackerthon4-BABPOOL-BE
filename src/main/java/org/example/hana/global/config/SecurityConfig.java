@@ -20,7 +20,6 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import java.util.Arrays;
 import java.util.List;
 
-
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -41,8 +40,9 @@ public class SecurityConfig {
                 .cors(configurer -> configurer.configurationSource(corsConfigurationSource()))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // 세션 사용 안함 (JWT 기반 인증 시 필요)
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/api/users/**", "/ws/websocket").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/recruitment-posts").permitAll() // GET 요청만 허용
-                        .requestMatchers("/api/users/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/recruitment-posts/**").permitAll()
                         .anyRequest().authenticated()
                 ).addFilterBefore(new JwtFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class);
 
@@ -57,10 +57,10 @@ public class SecurityConfig {
         corsConfiguration.addExposedHeader("*");
         corsConfiguration.setAllowCredentials(true);
 
-//      corsConfiguration.setAllowedOrigins(List.of("http://localhost:5173/", "https://ide-frontend-wheat.vercel.app/login", "https://ide-frontend-six.vercel.app/", "https://ide-frontend-wheat.vercel.app")/);
-        corsConfiguration.setAllowedOrigins(List.of("http://localhost:3000"));
+//      corsConfiguration.setAllowedOrigins(List.of("https://ide-frontend-wheat.vercel.app/login", "https://ide-frontend-six.vercel.app", "https://ide-frontend-wheat.vercel.app"));
+        corsConfiguration.setAllowedOrigins(List.of("https://ide-frontend-wheat.vercel.app/login", "krmp-d2hub-idock.9rum.cc/dev-test/repo_85a78215dc68", "https://ide-frontend-six.vercel.app", "https://ide-frontend-wheat.vercel.app", "http://localhost:3000", "https://k547f55f71a44a.user-app.krampoline.com", "http://localhost:5173"));
+
         corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"));
-        corsConfiguration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", corsConfiguration);

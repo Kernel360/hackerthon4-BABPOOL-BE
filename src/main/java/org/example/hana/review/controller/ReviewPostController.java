@@ -18,10 +18,10 @@ public class ReviewPostController {
 
     private final ReviewPostService reviewPostService;
 
-    @PostMapping("/api/review")
+    @PostMapping(value = "/api/review", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE})
     public ResponseEntity<ReviewPostResponseDto> create(
-            @RequestBody ReviewPostRequestDto dto
-//            @RequestPart MultipartFile file
+            @RequestPart("dto") ReviewPostRequestDto dto,
+            @RequestPart(value = "file", required = false) MultipartFile file
     ) {
 
         ReviewPostInfo postInfo = reviewPostService.create(
@@ -29,7 +29,8 @@ public class ReviewPostController {
                 dto.getTitle(),
                 dto.getContent(),
                 dto.getCategory(),
-                dto.getRating()
+                dto.getRating(),
+                file
         );
 
         ReviewPostResponseDto responseDto = ReviewPostResponseDto.toDto(postInfo);
@@ -64,6 +65,7 @@ public class ReviewPostController {
     ) {
         ReviewPostInfo info = reviewPostService.update(
                 postId,
+                dto.getUserId(),
                 dto.getTitle(),
                 dto.getContent(),
                 dto.getCategory(),

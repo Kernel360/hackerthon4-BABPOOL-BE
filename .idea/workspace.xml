@@ -4,21 +4,84 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63e211d2-ab82-4231-90e6-5dc593e17941" name="변경" comment="" />
+    <list default="true" id="63e211d2-ab82-4231-90e6-5dc593e17941" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/8.12.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.12.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.12.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.12.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.12.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.12.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.12.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.12.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.12.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.12.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/chatting/WebSocketConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/chatting/WebSocketConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/chatting/controller/ChatMessageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/chatting/controller/ChatMessageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/global/config/CorsConfig$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/global/config/CorsConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/global/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/global/config/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/global/exception/ErrorCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/global/exception/ErrorCode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/global/jwt/TokenProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/global/jwt/TokenProvider.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/recruitment/controller/RecruitmentCommentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/recruitment/controller/RecruitmentCommentController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/recruitment/controller/RecruitmentPostController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/recruitment/controller/RecruitmentPostController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/recruitment/db/ApplicationRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/recruitment/db/RecruitmentCommentRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/recruitment/db/RecruitmentPostRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/recruitment/entity/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/recruitment/entity/Application.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/recruitment/model/RecruitmentCommentResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/recruitment/model/RecruitmentCommentResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/recruitment/model/RecruitmentPostRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/recruitment/model/RecruitmentPostRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/recruitment/model/RecruitmentPostResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/recruitment/model/RecruitmentPostResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/recruitment/service/ApplicationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/recruitment/service/ApplicationService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/recruitment/service/RecruitmentCommentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/recruitment/service/RecruitmentCommentService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/recruitment/service/RecruitmentPostService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/recruitment/service/RecruitmentPostService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/review/controller/ReviewCommentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/review/controller/ReviewCommentController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/review/controller/ReviewPostController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/review/controller/ReviewPostController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/review/service/ReviewCommentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/review/service/ReviewCommentService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/review/service/ReviewPostService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/review/service/ReviewPostService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/user/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/user/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/user/dto/TokenDto$TokenDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/user/dto/TokenDto$TokenDtoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/user/dto/TokenDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/user/dto/TokenDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/user/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/example/hana/user/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/problems/problems-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/problems/problems-report.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/ReviewPostController.class.uniqueId0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/SecurityConfig.class.uniqueId0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/hana/global/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/hana/global/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/hana/recruitment/controller/RecruitmentPostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/hana/recruitment/controller/RecruitmentPostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/hana/recruitment/service/ApplicationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/hana/recruitment/service/ApplicationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/hana/review/service/ReviewPostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/hana/review/service/ReviewPostService.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="Hana" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Hana" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Hana" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -35,6 +98,10 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2uAI7JDJanGaLFooHY0mZ1FHUnB" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -44,14 +111,33 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Gradle.Build hackerthon4-BABPOOL-BE.executor": "Run",
+    "Gradle.hackerthon4-BABPOOL-BE [:org.example.hana.HanaApplication.main()].executor": "Run",
+    "Gradle.hackerthon4-BABPOOL-BE [bootJar].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.HanaApplication.executor": "Run",
+    "git-widget-placeholder": "release",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/seungmokkwon/IdeaProjects/hackerthon4-BABPOOL-BE/build.gradle",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "모듈",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true",
     "애플리케이션.HanaApplication.executor": "Run"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Gradle.hackerthon4-BABPOOL-BE [bootJar]">
     <configuration name="HanaApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.hana.HanaApplication" />
       <module name="Hana.main" />
@@ -65,34 +151,57 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
+    <configuration name="hackerthon4-BABPOOL-BE [bootJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="bootJar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="HanaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="Hana.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.hana.HanaApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="Hana.main" />
-      <option name="filePath" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="애플리케이션.HanaApplication" />
-        <item itemvalue="애플리케이션.HanaApplication" />
-        <item itemvalue="애플리케이션.HanaApplication" />
-        <item itemvalue="애플리케이션.HanaApplication" />
+        <item itemvalue="Gradle.hackerthon4-BABPOOL-BE [bootJar]" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.25659.39" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.25659.39" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="디폴트 작업">
-      <changelist id="585e2add-f258-41d6-8c24-93aba636a7ca" name="변경" comment="" />
       <created>1741570739004</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1741570739004</updated>
+      <workItem from="1741684783880" duration="3282000" />
     </task>
     <task id="LOCAL-00001" summary="global 폴더 추가">
       <option name="closed" value="true" />
@@ -176,6 +285,9 @@
     </task>
     <option name="localTasksCounter" value="11" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
