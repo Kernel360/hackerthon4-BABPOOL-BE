@@ -4,11 +4,12 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.example.hana.global.exception.CustomException;
 import org.example.hana.global.exception.ErrorCode;
-import org.example.hana.recruitment.db.ApplicationRepository;
-import org.example.hana.recruitment.db.RecruitmentPostRepository;
+import org.example.hana.recruitment.repository.ApplicationRepository;
+import org.example.hana.recruitment.repository.RecruitmentPostRepository;
 import org.example.hana.recruitment.entity.Application;
 import org.example.hana.recruitment.entity.RecruitmentPost;
 import org.example.hana.user.entity.User;
+import org.example.hana.user.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -18,15 +19,24 @@ import java.util.Optional;
 public class ApplicationService {
     private final ApplicationRepository applicationRepository;
     private final RecruitmentPostRepository recruitmentPostRepository;
+    private final UserRepository userRepository;
 
 
     @Transactional
-    public void createApplication(Long postId, User user) {
+    public void createApplication(Long postId, Long userId) {
+        User currentUser = userRepository.findById(userId).orElseThrow(
+                ()->new CustomException(ErrorCode.NOT_FOUND)
+        );
+
         RecruitmentPost recruitmentPost = recruitmentPostRepository.findById(postId)
                 .orElseThrow(() -> new CustomException(ErrorCode.APPLICATION_NOT_FOUND));
 
+        if (applicationRepository.existsByUserAndRecruitmentPost(currentUser, recruitmentPost)) {
+            throw new CustomException(ErrorCode.DUPLICATE_APPLICATION);
+        }
+
         Application application = Application.builder()
-                .user(user)
+                .user(currentUser)
                 .recruitmentPost(recruitmentPost)
                 .build();
 
@@ -34,8 +44,8 @@ public class ApplicationService {
     }
 
     @Transactional
-    public void deleteApplication(Long postId, User user) {
-        Optional<Application> optionalApplication = applicationRepository.findByUserIdAndRecruitmentPostId(user.getId(), postId);
+    public void deleteApplication(Long postId, Long userId) {
+        Optional<Application> optionalApplication = applicationRepository.findByUserIdAndRecruitmentPostId(userId, postId);
         if(optionalApplication.isPresent()){
             applicationRepository.delete(optionalApplication.get());
         } else {
