@@ -75,7 +75,7 @@
 <br>
 
 ## 3. 프로젝트 구조
-
+```
 main
  ├─java
  │  └─org
@@ -112,7 +112,7 @@ main
  │                  ├─repository
  │                  └─service
  └─resources
-
+```
  
 
 <br>
