@@ -1,6 +1,7 @@
 package org.example.hana.review.service;
 
 import lombok.RequiredArgsConstructor;
+import org.example.hana.global.jwt.TokenProvider;
 import org.example.hana.review.entity.ReviewComment;
 import org.example.hana.review.entity.ReviewPost;
 import org.example.hana.review.repository.ReviewCommentRepository;
@@ -8,8 +9,13 @@ import org.example.hana.review.repository.ReviewPostRepository;
 import org.example.hana.review.service.info.ReviewCommentInfo;
 import org.example.hana.user.TempUserRepository;
 import org.example.hana.user.entity.User;
+import org.example.hana.user.repository.UserRepository;
+import org.springframework.dao.PermissionDeniedDataAccessException;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import javax.naming.AuthenticationException;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -19,16 +25,18 @@ public class ReviewCommentService {
 
     private final ReviewPostRepository reviewPostRepository;
     private final ReviewCommentRepository reviewCommentRepository;
-    private final TempUserRepository tempUserRepository;
+    private final UserRepository userRepository;
+    private final TokenProvider tokenProvider;
 
     public ReviewCommentInfo create(Long postId, Long userId, String content) {
         ReviewPost post = reviewPostRepository.findById(postId)
                 .orElseThrow(() -> new NoSuchElementException("no review post found with id: " + postId));
-        User user = tempUserRepository.findById(userId).get();
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new NoSuchElementException("no user found with id: " + userId));
 
         ReviewComment reviewComment = ReviewComment.builder()
                 .reviewPost(post)
-                .user(user) // TODO
+                .user(user)
                 .content(content)
                 .build();
 
@@ -48,11 +56,17 @@ public class ReviewCommentService {
                 .toList();
     }
 
-    public ReviewCommentInfo update(Long postId, Long commentId, String content) {
+    public ReviewCommentInfo update(Long postId, Long commentId, String content, Long userId) {
         reviewPostRepository.findById(postId)
                 .orElseThrow(() -> new NoSuchElementException("no review post found with id: " + postId));
         ReviewComment reviewComment = reviewCommentRepository.findById(commentId)
                 .orElseThrow(() -> new NoSuchElementException("no comment found with id: " + commentId));
+        User user = userRepository.findById(userId)
+                        .orElseThrow(() -> new NoSuchElementException("no user found with id: " + userId));
+
+        if (!user.getId().equals(reviewComment.getUser().getId())) {
+            throw new RuntimeException("no permission to update comment");
+        }
 
         reviewComment.setContent(content);
 

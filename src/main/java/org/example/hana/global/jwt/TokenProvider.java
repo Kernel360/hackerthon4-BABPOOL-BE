@@ -62,6 +62,7 @@ public class TokenProvider {
                 .signWith(key, SignatureAlgorithm.HS512)
                 .compact();
         return TokenDto.builder()
+                .userId(userId)
                 .grantType(BEARER_TYPE)
                 .accessToken(accessToken)
                 .accessTokenExpiresIn(accessTokenExpiresIn.getTime())
@@ -88,6 +89,11 @@ public class TokenProvider {
 
         return new UsernamePasswordAuthenticationToken(principal, "", authorities);
 
+    }
+
+    public Long getUserIdByToken(String token){
+        Claims claims = parseClaims(token);
+        return Long.valueOf(claims.getSubject());
     }
 
     public boolean validateToken(String token) {

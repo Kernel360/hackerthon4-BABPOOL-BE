@@ -92,7 +92,7 @@ public class RecruitmentPostService {
      */
     public List<RecruitmentPostListResponse> findRecruitmentPostList(int page, int size) {
 //        Sort sort = Sort.by(Sort.Direction.DESC, "createdAt");
-        Pageable pageable = PageRequest.of(page - 1, size);
+        Pageable pageable = PageRequest.of(page, size);
         Page<RecruitmentPost> postPage = recruitmentPostRepository.findAll(pageable);
         return postPage.getContent().stream()
                 .map(RecruitmentPostListResponse::new)

@@ -87,9 +87,15 @@ public class ReviewPostService {
         return ReviewPostInfo.toInfo(reviewPost);
     }
 
-    public ReviewPostInfo update(Long reviewId, String title, String content, String category, int rating) {
+    public ReviewPostInfo update(Long reviewId, Long userId, String title, String content, String category, int rating) {
         ReviewPost reviewPost = reviewPostRepository.findById(reviewId)
                 .orElseThrow(() -> new NoSuchElementException("no review post found with id: " + reviewId));
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new NoSuchElementException("no user found with id: " + userId));
+
+        if (!user.getId().equals(reviewPost.getUser().getId())) {
+            throw new RuntimeException("no permission to update post");
+        }
 
         reviewPost.setTitle(title);
         reviewPost.setContent(content);

@@ -22,6 +22,8 @@ public class RecruitmentPostResponse {
 
     private Integer currentParticipants;
 
+    private Long userId;
+
 
     public RecruitmentPostResponse(RecruitmentPost post) {
         this.postId = post.getId();
@@ -33,5 +35,6 @@ public class RecruitmentPostResponse {
         this.category = post.getCategory();
         this.maxParticipants = post.getMaxParticipants();
         this.currentParticipants = post.getApplications().size();
+        this.userId = post.getUser().getId();
     }
 }

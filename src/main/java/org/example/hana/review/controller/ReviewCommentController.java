@@ -6,8 +6,11 @@ import org.example.hana.review.controller.dto.ReviewCommentResponseDto;
 import org.example.hana.review.service.ReviewCommentService;
 import org.example.hana.review.service.info.ReviewCommentInfo;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -43,7 +46,8 @@ public class ReviewCommentController {
             @PathVariable("commentId") Long commentId,
             @RequestBody ReviewCommentRequestDto requestDto
     ) {
-        ReviewCommentInfo info = reviewCommentService.update(postId, commentId, requestDto.getContent());
+
+        ReviewCommentInfo info = reviewCommentService.update(postId, commentId, requestDto.getContent(), requestDto.getUserId());
         ReviewCommentResponseDto responseDto = ReviewCommentResponseDto.toDto(info);
 
         return ResponseEntity.ok(responseDto);

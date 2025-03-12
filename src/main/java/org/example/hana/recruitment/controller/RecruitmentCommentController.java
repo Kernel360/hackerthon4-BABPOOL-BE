@@ -26,7 +26,7 @@ public class RecruitmentCommentController {
 
     @GetMapping("/{postId}/comments")
     public ResponseEntity<CommonResponse> findRecruitmentCommentList(@PathVariable Long postId,@RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "10") int size){
-        Pageable pageable = PageRequest.of(page - 1, size);
+        Pageable pageable = PageRequest.of(page, size);
 
         Page<RecruitmentCommentResponse> commentList = recruitmentCommentService.getCommentsByPostId(postId, pageable);
         CommonResponse response = new CommonResponse("공고 댓글리스트 조회 성공", 201, commentList);
