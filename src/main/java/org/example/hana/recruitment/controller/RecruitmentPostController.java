@@ -16,7 +16,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/recruitment-posts")
@@ -41,6 +43,17 @@ public class RecruitmentPostController {
         Long userId = UserUtils.getUserIdFromPrincipal(principal);
         RecruitmentPostResponse postResponse = recruitmentPostService.findRecruitmentPost(postId, userId);
         CommonResponse response = new CommonResponse("공고 상세 조회 성공", 201, postResponse);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @GetMapping("/{meetingId}/participants/status")
+    public ResponseEntity<CommonResponse<Boolean>> getParticipantStatus(@PathVariable Long meetingId,
+                                                                        Principal principal) {
+        Long userId = UserUtils.getUserIdFromPrincipal(principal);
+        boolean isParticipating = applicationService.isUserParticipating(userId, meetingId);
+        Map<String, Boolean> result = new HashMap<>();
+        result.put("isParticipating", isParticipating);
+        CommonResponse response = new CommonResponse("공고 참가 여부확인", 201, result);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

@@ -10,6 +10,7 @@ import org.example.hana.review.service.info.ReviewCommentInfo;
 import org.example.hana.review.service.info.ReviewPostInfo;
 import org.example.hana.user.TempUserRepository;
 import org.example.hana.user.entity.User;
+import org.example.hana.user.repository.UserRepository;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,7 @@ import java.util.UUID;
 public class ReviewPostService {
 
     private final ReviewPostRepository reviewPostRepository;
-    private final TempUserRepository userRepository;
+    private final UserRepository userRepository;
 
     public ReviewPostInfo create(Long userId, String title, String content, String category, int rating, MultipartFile image) {
         User user = userRepository.findById(userId).orElseThrow(NoSuchElementException::new);
