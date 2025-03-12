@@ -20,7 +20,8 @@
 
 | **윤다빈** | **권승목** | **조수연** |
 | :------: |  :------: | :------: |
-| [@[팀원 1 깃허브 아이디]](https://github.com/yoodab) | [@[팀원 2 깃허브 아이디]](https://github.com/Seungmok1) | [@[팀원 3 깃허브 아이디] ](https://github.com/Josuyeon89)|
+|![image](https://github.com/user-attachments/assets/8fd9c59b-16cf-4427-a4ac-4e58aa762364)  | ![image](https://github.com/user-attachments/assets/6c033e6b-b806-4afb-a6cd-a33bffa5a5cc) | ![image](https://github.com/user-attachments/assets/14c20545-7be0-4f00-90f7-05c89417d76a) |
+| [GitHub](https://github.com/yoodab) | [GitHub](https://github.com/Seungmok1) | [GitHub](https://github.com/Josuyeon89)|
 
 </div>
 
@@ -149,7 +150,7 @@ main
 
 ### 개발 기간
 
-- 전체 개발 기간 : [개발 시작일] ~ [개발 종료일]
+- 전체 개발 기간 : [25.03.10] ~ [25.03.12]
 - [필요한 경우 UI 구현, 기능 구현 등 세부 기간 명시]
 
 <br>
@@ -157,7 +158,6 @@ main
 ### 작업 관리
 
 - GitHub Projects와 Issues를 사용하여 진행 상황을 공유했습니다.
-- [프로젝트에 맞는 작업 관리 방식 명시]
 
 <br>
 
