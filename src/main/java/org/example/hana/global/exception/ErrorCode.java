@@ -27,7 +27,7 @@ public enum ErrorCode {
 
     APPLICATION_NOT_FOUND(HttpStatus.NOT_FOUND, "해당 지원요청을 찾을 수 없습니다."),
 
-
+    DUPLICATE_APPLICATION(HttpStatus.CONFLICT, "이미 신청한 사용자입니다."),
 
     NO_PERMISSION_TO_MODIFY(HttpStatus.FORBIDDEN, "수정 권한이 없습니다."), // 추가된 에러 코드
 

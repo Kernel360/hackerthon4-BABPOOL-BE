@@ -28,9 +28,12 @@ public class ApplicationService {
                 ()->new CustomException(ErrorCode.NOT_FOUND)
         );
 
-
         RecruitmentPost recruitmentPost = recruitmentPostRepository.findById(postId)
                 .orElseThrow(() -> new CustomException(ErrorCode.APPLICATION_NOT_FOUND));
+
+        if (applicationRepository.existsByUserAndRecruitmentPost(currentUser, recruitmentPost)) {
+            throw new CustomException(ErrorCode.DUPLICATE_APPLICATION);
+        }
 
         Application application = Application.builder()
                 .user(currentUser)
