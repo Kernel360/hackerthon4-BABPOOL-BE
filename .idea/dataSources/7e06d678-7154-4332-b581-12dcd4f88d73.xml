@@ -1212,7 +1212,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <StoredType>time(6)|0s</StoredType>
     </column>
     <column id="337" parent="300" name="id">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>3</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StoredType>bigint|0s</StoredType>

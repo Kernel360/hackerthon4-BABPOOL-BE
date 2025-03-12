@@ -65,6 +65,7 @@ public class ReviewPostController {
     ) {
         ReviewPostInfo info = reviewPostService.update(
                 postId,
+                dto.getUserId(),
                 dto.getTitle(),
                 dto.getContent(),
                 dto.getCategory(),
